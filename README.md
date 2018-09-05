@@ -186,7 +186,7 @@ SimulateCNVs/SimulateCNVs.py -Type e -G <input_fasta> -T <target_region> -o <out
 6. Simulate approximately 20 CNVs overlapping with exons on the whole genome, and at least 100 bps between each 2 CNVs. Don’t generate CNVs outside of exons. Don’t generate CNVs on missing sequences. Paired-end sequencing, with minimum base quality is 20 and maximum base quality is 60. Make a pair of test and control. The final outputs are bam files.
 ``` bash
 SimulateCNVs/SimulateCNVs.py -Type e -G <input_fasta> -T <target_region> -o <output_dir> \
-                              -e_tol 20 -f 100 -em -sc -pr -ql 20 -qu 60 -ssr -sb \
+                              -e_tol 20 -f 100 -em -sc -pr -q_min 20 -q_max 60 -ssr -sb \
                               -picard <absolute_path_to_picard> -GATK <absolute_path_to_GATK>
 ```
 
