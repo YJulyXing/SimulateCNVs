@@ -2,7 +2,7 @@
 
 **Maintainer: Yue "July" Xing**<br>
 **Author: Yue "July" Xing**<br>
-**Version: 1**<br>
+**Version: 1.0**<br>
 **Date: 06/27/2018**
 
 
@@ -198,7 +198,7 @@ SimulateCNVs/SimulateCNVs.py -Type e -G <input_fasta> -T <target_region> -o <out
 
 **Maintainer: Yue "July" Xing**<br>
 **Author: Yue "July" Xing**<br>
-**Version: 1**<br>
+**Version: 1.0**<br>
 **Date: 08/13/2018**
 
 ### Description
