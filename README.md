@@ -23,14 +23,15 @@ tar -zxvf SimulateCNVs.tar.gz
 * To generate bam outputs: <br>
 &#160;1. [Samtools](http://samtools.sourceforge.net/) <br>
 &#160;2. [BWA](http://bio-bwa.sourceforge.net/) <br>
-&#160;3. [picard 2.15.0](https://broadinstitute.github.io/picard/) <br>
-&#160;4. [GATK](https://software.broadinstitute.org/gatk/)
+&#160;3. [JAVA](https://www.java.com/en/) <br>
+&#160;4. [picard 2.15.0](https://broadinstitute.github.io/picard/) <br>
+&#160;5. [GATK](https://software.broadinstitute.org/gatk/)
 
 ## Usage
 ``` bash
 SimulateCNVs.py [-h] -Type {g,e} -G GENOME_FILE [-T TARGET_REGION_FILE]
-                [-e_cnv EXON_CNV_LIST] [-e_chr EXON_CNV_CHR] 
-                [-e_tol EXON_CNV_TOL] [-e_cl EXON_CNV_LEN_FILE]
+                [-e_cnv TARGET_CNV_LIST] [-e_chr TARGET_CNV_CHR] 
+                [-e_tol TARGET_CNV_TOL] [-e_cl TARGET_CNV_LEN_FILE]
                 [-o_cnv OUT_CNV_LIST] [-o_chr OUT_CNV_CHR] 
                 [-o_tol OUT_CNV_TOL] [-o_cl OUT_CNV_LEN_FILE] 
                 [-ol OVERLAP_BPS] [-g_cnv GENOME_CNV_LIST] 
@@ -67,23 +68,23 @@ SimulateCNVs.py [-h] -Type {g,e} -G GENOME_FILE [-T TARGET_REGION_FILE]
 |   Parameter                    |     Default value     |    Explanation                             | Restrictions |
 | :----------------------------: | :-------------------: | :----------------------------------------- | :----------- |
 | -T TARGET_REGION_FILE | - | Target region file | Must be used and can only be used with WES simulation. | - |
-| -e_cnv EXON_CNV_LIST | - | A user-defined list of CNVs overlapping with exons | One and only one of -e_cnv, -e_chr, -e_tol and -e_cl can be used with WES simulation to generate CNVs overlapping with exons.<br> If -e_cnv is provided, -em, -f, -ms, -ml, -ol, -min_cn, -max_cn, -min_len and -max_len will be ignored for CNVs overlapping with exons. |
-| -e_chr EXON_CNV_CHR | - | Number of CNVs overlapping with exons to be generated on each chromosome | Same as above. |
-| -e_tol EXON_CNV_TOL | - | Total number of CNVs overlapping with exons to be generated across the genome (an estimate) |  Same as above. |
-| -e_cl EXON_CNV_LEN_FILE | - | User supplied file of CNV length for CNVs overlapping with exons | Must be used with -ml user. Can’t be used with -o_cnv, -o_chr and -o_tol. Otherwise same as above. |
-| -o_cnv OUT_CNV_LIST | - | A user-defined list of CNVs outside of exons | One and only one of -o_cnv, -o_chr, -o_tol and -o_cl can be used with WES simulation to generate CNVs outside of exons.<br> . If -o_cnv is provided, -em, -f, -ms, -ml, -ol, -min_cn, -max_cn, -min_len and -max_len will be ignored for CNVs outside of exons. |
-| -o_chr OUT_CNV_CHR | - | Number of CNVs outside of exons to be generated on each chromosome |  Same as above. |
-| -o_tol OUT_CNV_TOL | - | Total number of CNVs outside of exons to be generated across the genome (an estimate) |  Same as above. |
-| -o_cl OUT_CNV_LEN_FILE | - | User supplied file of CNV length for CNVs outside of exons | Must be used with -ml user. Can’t be used with -e_cnv, -e_chr and -e_tol. Otherwise same as above. |
-| -ol OVERLAP_BPS | 100 | For each CNV overlapping with exons, number of minimum overlapping bps | Can only be used with WES simulation. |
+| -e_cnv TARGET_CNV_LIST | - | A user-defined list of CNVs overlapping with target regions | One and only one of -e_cnv, -e_chr, -e_tol and -e_cl can be used with WES simulation to generate CNVs overlapping with target regions.<br> If -e_cnv is provided, -em, -f, -ms, -ml, -ol, -min_cn, -max_cn, -min_len and -max_len will be ignored for CNVs overlapping with target regions. |
+| -e_chr TARGET_CNV_CHR | - | Number of CNVs overlapping with target regions to be generated on each chromosome | Same as above. |
+| -e_tol TARGET_CNV_TOL | - | Total number of CNVs overlapping with target regions to be generated across the genome (an estimate) |  Same as above. |
+| -e_cl TARGET_CNV_LEN_FILE | - | User supplied file of CNV length for CNVs overlapping with target regions | Must be used with -ml user. Can’t be used with -o_cnv, -o_chr and -o_tol. Otherwise same as above. |
+| -o_cnv OUT_CNV_LIST | - | A user-defined list of CNVs outside of target regions | One and only one of -o_cnv, -o_chr, -o_tol and -o_cl can be used with WES simulation to generate CNVs outside of target regions.<br> . If -o_cnv is provided, -em, -f, -ms, -ml, -ol, -min_cn, -max_cn, -min_len and -max_len will be ignored for CNVs outside of target regions. |
+| -o_chr OUT_CNV_CHR | - | Number of CNVs outside of target regions to be generated on each chromosome |  Same as above. |
+| -o_tol OUT_CNV_TOL | - | Total number of CNVs outside of target regions to be generated across the genome (an estimate) |  Same as above. |
+| -o_cl OUT_CNV_LEN_FILE | - | User supplied file of CNV length for CNVs outside of target regions | Must be used with -ml user. Can’t be used with -e_cnv, -e_chr and -e_tol. Otherwise same as above. |
+| -ol OVERLAP_BPS | 100 | For each CNV overlapping with target regions, number of minimum overlapping bps | Can only be used with WES simulation. |
 
 #### Arguments for simulating rearranged genomes for WGS data:
 
 |   Parameter                    |     Default value     |    Explanation                             | Restrictions |
 | :----------------------------: | :-------------------: | :----------------------------------------- | :----------- |
-| -g_cnv GENOME_CNV_LIST | - | A user-defined list of CNVs outside of exons | One and only one of -g_cnv, -g_chr, -g_tol and -g_cl can be used with WGS simulation to generate CNVs. |
-| -g_chr GENOME_CNV_CHR | - | Number of CNVs overlapping with exons to be generated on each chromosome |  Same as above. |
-| -g_tol GENOME_CNV_TOL | - | Total number of CNVs overlapping with exons to be generated across the genome (an estimate) |  Same as above. |
+| -g_cnv GENOME_CNV_LIST | - | A user-defined list of CNVs outside of target regions | One and only one of -g_cnv, -g_chr, -g_tol and -g_cl can be used with WGS simulation to generate CNVs. |
+| -g_chr GENOME_CNV_CHR | - | Number of CNVs overlapping with target regions to be generated on each chromosome |  Same as above. |
+| -g_tol GENOME_CNV_TOL | - | Total number of CNVs overlapping with target regions to be generated across the genome (an estimate) |  Same as above. |
 | -g_cl GENOME_CNV_LEN_FILE | - | User supplied file of CNV length | Same as above. |
 
 #### General arguments for simulating rearranged genomes with CNVs:
@@ -135,11 +136,12 @@ SimulateCNVs.py [-h] -Type {g,e} -G GENOME_FILE [-T TARGET_REGION_FILE]
 
 ## Outputs
 1. Rearranged genome(s) (fasta)<br>
-Target regions for rearranged genome(s) (bed)<br>
+Target regions for rearranged genome(s) (bed, if WES simulation)<br>
 Control genome (fasta, if -sc is chosen)<br>
-Target regions for control (bed, always generated in case -clr is chosen to make changes to target regions)
-2. List(s) of CNVs overlapping with exons (bed)<br>
-List(s) of CNVs outside of exons (bed, if chosen to generate CNVs outside of exons)
+Target regions for control (bed, if WES simulation. Always generated in case -clr is chosen to make changes to target regions)
+2. List(s) of CNVs overlapping with target regions (bed, if WES simulation)<br>
+List(s) of CNVs outside of target regions (bed, if chosen to generate CNVs outside of target regions in WES simulation)<br>
+List(s) of CNVs across the genome (bed, if WGS simulation)
 3. Short reads for rearranged genome(s) (fastq, if -ssr is chosen)<br>
 Short reads for control genome(s) (fastq, if -sc and -ssr is chosen)
 4. Indexes for the control genome (.dict, .fai, .sa, etc., if -ssr and -sb is chosen and no indexes exist in the output directory)
@@ -171,7 +173,7 @@ SimulateCNVs/SimulateCNVs.py -Type g -G <input_fasta> -o <output_dir> \
 ```
 
 #### WES data simulation:
-4. Simulate 10 CNVs overlapping with exons, and 1 CNV outside of exons randomly on each chromosome using default lengths, copy numbers, minimum distance between each of the 2 CNVs and proportion of insertions. For each CNV overlapping with exons, the overlapping length is not less than 90 bps. CNV start points and lengths follow gauss distribution. Don’t generate CNVs on missing sequences. Make 5 test samples and control. Generate short reads (fastq) files by default settings, using paired-end sequencing.
+4. Simulate 10 CNVs overlapping with exons (target regions), and 1 CNV outside of exons randomly on each chromosome using default lengths, copy numbers, minimum distance between each of the 2 CNVs and proportion of insertions. For each CNV overlapping with exons, the overlapping length is not less than 90 bps. CNV start points and lengths follow gauss distribution. Don’t generate CNVs on missing sequences. Make 5 test samples and control. Generate short reads (fastq) files by default settings, using paired-end sequencing.
 ``` bash
 SimulateCNVs/SimulateCNVs.py -Type e -G <input_fasta> -T <target_region> -o <output_dir> \
                               -e_chr 10 -o_chr 1 -ol 90 -ms gauss -ml gauss -em -n 5 -sc -pr -ssr
