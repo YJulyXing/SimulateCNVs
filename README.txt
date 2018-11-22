@@ -11,8 +11,8 @@ A tool for simulating CNVs for WES or WGS data. It simulates rearranged genomes,
 
 
 Installation:
-No installation required. Simply type "git clone https://github.com/YJulyXing/SimulateCNVs.git" and it will be ready to use.
-
+No installation required. Simply type the following and it will be ready to use: git clone https://github.com/YJulyXing/SimulateCNVs.git
+Or manually download the source codes at https://github.com/YJulyXing/SimulateCNVs.
 
 Requirements:
 1. General use: Python 2.7 (https://www.python.org/download/releases/2.7/). Required python packages: argparse, random, os, subprocess, math, sys, time
