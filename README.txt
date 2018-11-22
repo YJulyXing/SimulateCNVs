@@ -11,7 +11,7 @@ A tool for simulating CNVs for WES or WGS data. It simulates rearranged genomes,
 
 
 Installation:
-Download the package at https://github.com/YJulyXing/SimulateCNVs and unpack it: tar -zxvf SimulateCNVs.tar.gz
+No installation required. Simply type "git clone https://github.com/YJulyXing/SimulateCNVs.git" and it will be ready to use.
 
 
 Requirements:
