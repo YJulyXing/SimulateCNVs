@@ -1,5 +1,7 @@
 # SimulateCNVs
 
+# For SimulateCNVs' updated version: SECNVs 2.3, please click [here](https://github.com/YJulyXing/SECNVs).
+
 **Maintainer: Yue "July" Xing**<br>
 **Author: Yue "July" Xing**<br>
 **Version: 1.0**<br>
